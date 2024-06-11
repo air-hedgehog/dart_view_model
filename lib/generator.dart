@@ -5,11 +5,11 @@ import 'package:analyzer/dart/element/visitor.dart';
 import 'package:build/build.dart';
 import 'package:source_gen/source_gen.dart';
 
-class ModelGenerator extends GeneratorForAnnotation<ViewModelState> {
+class ModelGenerator extends GeneratorForAnnotation<ViewModelStateAnnotation> {
   @override
   String generateForAnnotatedElement(
       Element element, ConstantReader annotation, BuildStep buildStep) {
-    ViewModelState visitor = ViewModelState();
+    ViewModelVisitor visitor = ViewModelVisitor();
     // Visit the class fields and constructor, then the className and fields
     // variable in the visitor will contain a value.
     element.visitChildren(visitor);
@@ -33,7 +33,13 @@ String _generateApply(String className, Map<String, dynamic> fields) {
     ''';
 }
 
-class ViewModelState extends SimpleElementVisitor<void> {
+class ViewModelStateAnnotation {
+  const ViewModelStateAnnotation();
+}
+
+const viewModelStateAnnotation = ViewModelStateAnnotation();
+
+class ViewModelVisitor extends SimpleElementVisitor<void> {
   String className = '';
   Map<String, dynamic> fields = {};
 
@@ -56,9 +62,6 @@ class ViewModelState extends SimpleElementVisitor<void> {
     fields[element.name] = elementType;
   }
 }
-
-// This variable will used as annotation to generate the code
-final viewModelState = ViewModelState();
 
 Builder generateModelGenClass(BuilderOptions options) => SharedPartBuilder(
       [ModelGenerator()],

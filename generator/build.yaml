@@ -9,7 +9,7 @@ builders:
     target: ":generator"
     import: "package:generator/generator.dart"
     builder_factories: ["generateModelGenClass"] #Builder name(BuilderOptions)
-    build_extensions: { ".txt": [".g.dart"] }
+    build_extensions: { ".dart": [".gg.smart"] }
     auto_apply: dependents
     build_to: source
     applies_builders: ["source_gen|combining_builder"]

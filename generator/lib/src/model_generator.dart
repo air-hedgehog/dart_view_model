@@ -1,7 +1,7 @@
 import 'package:analyzer/dart/element/element.dart';
-import 'package:annotations/annotation.dart';
+import 'package:annotation/annotation.dart';
 import 'package:build/build.dart';
-import 'package:generators/src/model_visitor.dart';
+import 'package:generator/src/model_visitor.dart';
 import 'package:source_gen/source_gen.dart';
 
 class ModelGenerator extends GeneratorForAnnotation<ViewModelStateAnnotation> {

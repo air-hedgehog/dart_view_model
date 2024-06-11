@@ -14,10 +14,10 @@ dependencies:
   flutter:
     sdk: flutter
   source_gen: ^1.5.0
-  annotations:
-    path: ./annotations
-  generators:
-    path: ./generators
+  annotation:
+    path: ./annotation
+  generator:
+    path: ./generator
 
 dev_dependencies:
   flutter_test:

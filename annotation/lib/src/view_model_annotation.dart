@@ -1,5 +1,3 @@
-library annotations;
-
 class ViewModelStateAnnotation {
   const ViewModelStateAnnotation();
 }

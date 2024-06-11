@@ -15,7 +15,7 @@ dependencies:
   source_gen: ^1.5.0
   build: ^2.4.1
   annotations:
-    path: ../annotations
+    path: ../annotation
 
 dev_dependencies:
   flutter_test:

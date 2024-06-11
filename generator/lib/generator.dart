@@ -4,7 +4,7 @@ import 'package:build/build.dart';
 import 'package:generator/src/model_generator.dart';
 import 'package:source_gen/source_gen.dart';
 
-Builder generateModelGenClass(BuilderOptions options) => SharedPartBuilder(
+Builder generateModelGenClass(BuilderOptions options) => PartBuilder(
       [ModelGenerator()],
       "gen",
     );

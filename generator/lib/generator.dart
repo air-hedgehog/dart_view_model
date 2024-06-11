@@ -6,5 +6,5 @@ import 'package:source_gen/source_gen.dart';
 
 Builder generateModelGenClass(BuilderOptions options) => SharedPartBuilder(
       [ModelGenerator()],
-      "",
+      "gen",
     );

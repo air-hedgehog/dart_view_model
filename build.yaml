@@ -6,8 +6,8 @@ targets:
 
 builders:
   generators:
-    target: ":generator" # Generator name
-    import: "package:generated/generator.dart"
+    target: ":generators" # Generator name
+    import: "package:generators/generator.dart"
     builder_factories: ["generateModelGenClass"] # Builder name(BuilderOption) this is a definition
     build_extensions: { ".dart": [".g.dart"] }
     auto_apply: dependents

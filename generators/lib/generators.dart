@@ -1,9 +1,10 @@
-library generator;
+library generators;
 
 import 'package:analyzer/dart/element/element.dart';
-import 'package:analyzer/dart/element/visitor.dart';
 import 'package:build/build.dart';
+import 'package:generators/model_visitor.dart';
 import 'package:source_gen/source_gen.dart';
+import 'package:annotations/annotations.dart';
 
 class ModelGenerator extends GeneratorForAnnotation<ViewModelStateAnnotation> {
   @override
@@ -33,37 +34,3 @@ String _generateApply(String className, Map<String, dynamic> fields) {
     ''';
 }
 
-class ViewModelStateAnnotation {
-  const ViewModelStateAnnotation();
-}
-
-const viewModelStateAnnotation = ViewModelStateAnnotation();
-
-class ViewModelVisitor extends SimpleElementVisitor<void> {
-  String className = '';
-  Map<String, dynamic> fields = {};
-
-  @override
-  void visitConstructorElement(ConstructorElement element) {
-    final String returnType = element.returnType.toString();
-    className = returnType.replaceAll("*", ""); // ClassName* -> ClassName
-  }
-
-  @override
-  void visitFieldElement(FieldElement element) {
-    /*
-    {
-      name: String,
-      price: double
-    }
-     */
-
-    String elementType = element.type.toString().replaceAll("*", "");
-    fields[element.name] = elementType;
-  }
-}
-
-Builder generateModelGenClass(BuilderOptions options) => SharedPartBuilder(
-      [ModelGenerator()],
-      "model_generator",
-    );

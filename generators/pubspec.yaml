@@ -1,7 +1,7 @@
-name: view_model
-description: "A library to mimic MVVM Android architecture using Dart Streams"
+name: generators
+description: "A new Flutter package project."
 version: 0.0.1
-homepage: "https://akimchenko.work"
+homepage: ""
 publish_to: none
 
 environment:
@@ -9,21 +9,18 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
-  analyzer: ^6.4.1
-  build: ^2.4.1
   flutter:
     sdk: flutter
+  analyzer: ^6.4.1
   source_gen: ^1.5.0
+  build: ^2.4.1
   annotations:
-    path: ./annotations
-  generators:
-    path: ./generators
+    path: ../annotations
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^3.0.0
-  build_runner: 
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

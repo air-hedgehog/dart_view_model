@@ -17,22 +17,20 @@ class ScreenGenerator extends GeneratorForAnnotation<ViewModelStateAnnotation> {
       );
     }
 
-    final className = element.name;
-    if (className != null) {
-      final baseName = _getBaseName(className);
+    final className = element.name!;
+    final baseName = _getBaseName(className);
 
-      // Check if files already exist before generating
-      final screenFileExists = await _fileExists(buildStep, baseName, '_screen.dart');
-      final viewModelFileExists = await _fileExists(buildStep, baseName, '_view_model.dart');
+    // Check if files already exist before generating
+    final screenFileExists = await _fileExists(buildStep, baseName, '_screen.dart');
+    final viewModelFileExists = await _fileExists(buildStep, baseName, '_view_model.dart');
 
-      // Only generate if files don't exist
-      if (!screenFileExists) {
-        await _generateScreenFile(buildStep, baseName, className);
-      }
+    // Only generate if files don't exist
+    if (!screenFileExists) {
+      await _generateScreenFile(buildStep, baseName, className);
+    }
 
-      if (!viewModelFileExists) {
-        await _generateViewModelFile(buildStep, baseName, className);
-      }
+    if (!viewModelFileExists) {
+      await _generateViewModelFile(buildStep, baseName, className);
     }
     // Return empty string since we're generating standalone files
     return '';

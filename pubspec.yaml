@@ -9,11 +9,11 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
-  analyzer: ^6.4.1
-  build: ^2.4.1
+  analyzer: ^8.4.0
+  build: ^4.0.2
   flutter:
     sdk: flutter
-  source_gen: ^1.5.0
+  source_gen: ^4.0.2
   annotation:
     path: ./annotation
   generator:
@@ -23,7 +23,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^3.0.0
-  build_runner: ^2.4.11
+  build_runner: ^2.9.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

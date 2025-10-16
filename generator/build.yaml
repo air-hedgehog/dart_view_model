@@ -1,15 +1,38 @@
 targets:
   $default:
     builders:
-      generators|annotations:
+      # Your existing extension generator
+      generator|generateModelGenClass:
         enabled: true
+        generate_for:
+          include:
+            - lib/**/*.dart`
+
+      # New screen generator (only generates if files don't exist)
+      generator|generateScreenFiles:
+        enabled: true
+        generate_for:
+          include:
+            - lib/**/*_state.dart`
+          exclude:
+            - lib/**/*.g.dart`
 
 builders:
-  generators:
+  # Existing extension generator
+  generateModelGenClass:
     target: ":generator"
     import: "package:generator/generator.dart"
-    builder_factories: ["generateModelGenClass"] #Builder name(BuilderOptions)
+    builder_factories: ["generateModelGenClass"]
     build_extensions: { ".dart": [".g.part"] }
     auto_apply: dependents
     build_to: cache
     applies_builders: ["source_gen|combining_builder"]
+
+  # New screen generator
+  generateScreenFiles:
+    target: ":generator"
+    import: "package:generator/generator.dart"
+    builder_factories: ["generateScreenFiles"]
+    build_extensions: { ".dart": [".screen.dart"] }
+    auto_apply: dependents
+    build_to: source  # Important: generates to source directory

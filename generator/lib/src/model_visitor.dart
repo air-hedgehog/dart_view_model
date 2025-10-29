@@ -8,13 +8,12 @@ class ViewModelVisitor extends SimpleElementVisitor2<void> {
   @override
   void visitConstructorElement(ConstructorElement element) {
     final String returnType = element.returnType.toString();
-    className = returnType.replaceAll("*", ""); // ClassName* -> ClassName
+    className = returnType.replaceAll("*", "");
   }
 
   @override
   void visitFieldElement(FieldElement element) {
-
     String elementType = element.type.toString().replaceAll("*", "");
-    fields[element.name!] = elementType;
+    fields[element.name ?? ""] = elementType;
   }
 }
